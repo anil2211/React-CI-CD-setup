@@ -28,6 +28,6 @@ jobs:
                 github-token: ${{ github.token }}
 
             - name: "deploy to vercel"
-              run: vercel --prod --token=${{secrets.VERCEL_TOKEN}} --confirm --name=cicdProject
+              run: vercel --prod --token=${{secrets.VERCEL_TOKEN}} --confirm --name=cicd_project
             #   env: 
             #     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
