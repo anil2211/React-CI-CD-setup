@@ -2,12 +2,12 @@ pipeline{
     agent any
     stages{
         stage("build"){
-            agent{
-                docker{
-                    image 'node:18-alpine'
-                    resueNode true 
-                }
-            }
+            // agent{
+            //     docker{
+            //         image 'node:18-alpine'
+            //         resueNode true 
+            //     }
+            // }
             steps{
                 sh '''
                 
