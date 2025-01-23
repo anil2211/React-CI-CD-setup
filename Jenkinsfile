@@ -16,20 +16,16 @@ pipeline {
         }
 
         stage('Test') {
-            agent {
-                docker {
-                    image 'node:22.11.0-alpine3.20'
-                    args '-u root'
-                    reuseNode true // Reuse the node for the next stages
+            steps {
+                script {
+                    // This block runs inside a Docker container for the "Test" stage
+                    docker.image('node:22.11.0-alpine3.20').inside('-u root') {
+                        bat 'npm run test'  // Run tests inside the container
+                    }
                 }
             }
-
-            steps {
-                bat '''
-                    npm run test
-                '''
-            }
         }
+
         stage('Build') {
             steps {
                 bat '''
