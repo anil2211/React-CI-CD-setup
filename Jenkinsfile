@@ -1,24 +1,32 @@
 pipeline{
     agent any
+    options{
+        skipDefaultCheckout(true)
+    }
     stages{
-        stage("build"){
-            // agent{
-            //     docker{
-            //         image 'node:18-alpine'
-            //         resueNode true 
-            //     }
-            // }
+        stage('clean up code'){
+            steps{
+                cleanWs()
+            }
+        }
+        stage('checkout using SCM'){
+            steps{
+                checkout scm
+
+            }
+        }
+        stage('build'){
             steps{
                 bat '''
-                dir /a 
+                dir /a
                 node --version
                 npm --version
                 npm install
                 npm run build
                 dir /a
-                
                 '''
             }
         }
     }
 }
+        
