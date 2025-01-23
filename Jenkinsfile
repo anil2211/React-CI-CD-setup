@@ -28,7 +28,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat '''
+                sh '''
                 
                 node --version  
                 npm --version  
