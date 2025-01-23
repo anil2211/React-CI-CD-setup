@@ -30,12 +30,12 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                dir /a
+                ls -la
                 node --version  
                 npm --version  
                 npm install 
                 npm run build  
-                dir /a  
+                ls -la  
                 '''
             }
         }
