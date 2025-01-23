@@ -9,7 +9,7 @@ pipeline{
             //     }
             // }
             steps{
-                sh '''
+                bat '''
                 
                 ls -l
                 node --version
