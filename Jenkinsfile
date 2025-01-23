@@ -1,14 +1,3 @@
-<!-- pipeline{
-    agent any
-    stages{
-        stage('Hello') {
-            steps{
-                echo 'Hello'
-            }    
-    }
-  }
-} -->
-
 pipeline{
     agent any
     stages{
