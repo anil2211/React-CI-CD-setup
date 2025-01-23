@@ -29,7 +29,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                dir /a  
+                
                 node --version  
                 npm --version  
                 npm install 
