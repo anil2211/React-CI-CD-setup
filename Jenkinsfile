@@ -17,12 +17,12 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
-                dir /a  // List all files in the workspace to check
-                node --version  // Check the Node.js version
-                npm --version  // Check the npm version
-                npm install  // Install dependencies
-                npm run build  // Run the build script
-                dir /a  // List all files again after build
+                dir /a  
+                node --version  
+                npm --version  
+                npm install 
+                npm run build  
+                dir /a  
                 '''
             }
         }
