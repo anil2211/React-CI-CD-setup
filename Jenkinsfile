@@ -15,21 +15,21 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    // Running the Docker container with correct absolute path for Windows
-                    // docker.image('node:22.11.0-alpine3.20').inside(
-                    //     '-v C:/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe:/workspace -w /workspace') {
-                    docker.image('node:22.11.0-alpine3.20').inside("-w /workspace"){
-                        // Install dependencies inside the container
-                        sh 'npm install'  
-                        // Uncomment if you want to run tests inside the container
-                        // sh 'npm run test'
-                    }
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         script {
+        //             // Running the Docker container with correct absolute path for Windows
+        //             // docker.image('node:22.11.0-alpine3.20').inside(
+        //             //     '-v C:/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe:/workspace -w /workspace') {
+        //             docker.image('node:22.11.0-alpine3.20').inside("-w /workspace"){
+        //                 // Install dependencies inside the container
+        //                 sh 'npm install'  
+        //                 // Uncomment if you want to run tests inside the container
+        //                 // sh 'npm run test'
+        //             }
+        //         }
+        //     }
+        // }
 
         stage('Build') {
             steps {
@@ -40,6 +40,14 @@ pipeline {
                 npm install 
                 npm run build  
                 ls -la  
+                '''
+            }
+        }
+
+        stage("deploy"){
+            steps{
+                bat '''
+                npm install -g vercel
                 '''
             }
         }
