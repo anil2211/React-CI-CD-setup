@@ -29,7 +29,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '''
+                bat '''
                 ls -la
                 node --version  
                 npm --version  
