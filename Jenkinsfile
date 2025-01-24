@@ -22,7 +22,7 @@ pipeline {
                     // docker.image('node:22.11.0-alpine3.20').inside('-u root -w /workspace')
                     docker.image('node:22.11.0-alpine3.20').inside('-u root -w /c/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe') {
 
-                    {
+                    
                         sh 'npm install'  // Install dependencies
                         // sh 'npm run test'  // Run tests inside the container
                     }
