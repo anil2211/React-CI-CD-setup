@@ -47,7 +47,6 @@ pipeline {
                 '''
             }
         }
-"PTw6J6vI15yyZiD5lVaD8ZsR"
         stage("deploy on vercel"){
             steps{
                 bat '''
