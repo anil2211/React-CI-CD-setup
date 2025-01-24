@@ -1,7 +1,8 @@
 pipeline {
     agent any
     environment{
-        MY_VAR='my value'
+        NODE_ENV="test"
+        VERCEL_TOKEN=credentials("VERCEL_TOKEN")
     }
     options {
         skipDefaultCheckout(true)  // Skips the default SCM checkout
@@ -46,7 +47,7 @@ pipeline {
                 '''
             }
         }
-
+"PTw6J6vI15yyZiD5lVaD8ZsR"
         stage("deploy on vercel"){
             steps{
                 bat '''
@@ -55,9 +56,9 @@ pipeline {
                 npm install -g vercel --no-optional --loglevel=error
                 npm update -g vercel
                 npm install -g vercel
-                echo "installed succesfully"
+
                 echo $My_VAR
-                echo "$My_VAR"
+                vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicd_project
 
                 '''
             }
