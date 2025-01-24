@@ -20,7 +20,7 @@ pipeline {
                 script {
                     // This block runs inside a Docker container for the "Test" stage
                     // docker.image('node:22.11.0-alpine3.20').inside('-u root -w /workspace')
-                    docker.image('node:22.11.0-alpine3.20').inside('-u root -w /c/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe/ .') {
+                    docker.image('node:22.11.0').inside('-u root -w /c/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe/') {
 
                     
                         sh 'npm install'  // Install dependencies
