@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment{
+        My_VAR="my value"
         NODE_ENV="test"
         VERCEL_TOKEN=credentials("VERCEL_TOKEN")
     }
@@ -50,15 +51,14 @@ pipeline {
         stage("deploy on vercel"){
             steps{
                 bat '''
-                
-                
                 npm install -g vercel
                 npm update -g vercel 
                 npm install uuid@latest
                 npm install glob@latest
 
                 echo $My_VAR
-                vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicd_project
+                echo
+                vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicd_project2
 
                 '''
             }
