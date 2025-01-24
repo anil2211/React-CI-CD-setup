@@ -50,12 +50,14 @@ pipeline {
         stage("deploy on vercel"){
             steps{
                 bat '''
-                npm install -g vercel
-                npm update -g vercel
+                
+                
                 npm install -g vercel --no-optional --loglevel=error
-
-
+                npm update -g vercel
+                npm install -g vercel
+                echo "installed succesfully"
                 echo $My_VAR
+                echo "$My_VAR"
 
                 '''
             }
