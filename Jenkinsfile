@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment{
+        MY_VAR='my value'
+    }
     options {
         skipDefaultCheckout(true)  // Skips the default SCM checkout
     }
@@ -48,6 +51,8 @@ pipeline {
             steps{
                 bat '''
                 npm install -g vercel
+                echo $My_VAR
+                
                 '''
             }
         }
