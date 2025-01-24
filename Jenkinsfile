@@ -18,10 +18,13 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    // This block runs inside a Docker container for the "Test" stage
-                    docker.image('node:22.11.0-alpine3.20').inside('-u root -w /c/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe') {
-                        sh 'npm install'  // Install dependencies inside the container
-                        // sh 'npm run test'  // Uncomment if you want to run tests inside the container
+                    // Running the Docker container with correct absolute path for Windows
+                    docker.image('node:22.11.0-alpine3.20').inside(
+                        '-v C:/ProgramData/Jenkins/.jenkins/workspace/git_clone_pipe:/workspace -w /workspace') {
+                        // Install dependencies inside the container
+                        sh 'npm install'  
+                        // Uncomment if you want to run tests inside the container
+                        // sh 'npm run test'
                     }
                 }
             }
