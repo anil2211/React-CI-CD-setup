@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // This block runs inside a Docker container for the "Test" stage
-                    docker.image('node:22.11.0-alpine3.20').inside('-u root') {
+                    docker.image('node:22.11.0-alpine3.20').inside('-u root -w /workspace') {
                         sh 'npm install'  // Install dependencies
                         // sh 'npm run test'  // Run tests inside the container
                     }
