@@ -52,9 +52,10 @@ pipeline {
                 bat '''
                 
                 
-                npm install -g vercel --no-optional --loglevel=error
-                npm update -g vercel
                 npm install -g vercel
+                npm update -g vercel 
+                npm install uuid@latest
+                npm install glob@latest
 
                 echo $My_VAR
                 vercel --prod --token=$VERCEL_TOKEN --confirm --name=cicd_project
